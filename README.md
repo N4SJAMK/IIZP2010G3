@@ -1,6 +1,6 @@
 # IIZP2010G3
 
-## Pika-ohjeet miten laittaa manuaalisesti koko roska
+## Pikaohjeet miten laittaa manuaalisesti koko roska
 
 1. Asenna vagrant: https://github.com/N4SJAMK/teamboard
 2. Kun vagrant on tulilla ja olet `vagrant ssh` yhdistänyt siihen niin aletaan hommiin:
