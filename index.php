@@ -12,7 +12,6 @@ mb_http_output('UTF-8');
 
 ## Core files
 include_once "core/core.php";
-include_once "core/mysqlSettings.php";
 include_once "core/msgsys.php";
 
 ## Autoloader for classes
@@ -21,7 +20,7 @@ function __autoload($className){
 }
 
 # Database connection
-$database = new MySQLDatabase($mysql["host"],$mysql["data"],$mysql["user"],$mysql["pass"]);
+$database = new PDO();
 
 # Router, handles paths
 $router = new Router();
