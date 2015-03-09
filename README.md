@@ -56,7 +56,8 @@ Sitten muokataan vagrantfile, joka löytyy sieltä mihin vagrantin laitoit (Wind
 
 Buuttaa vagrant:
 
-* Avaa uusi Git Bash
+* Takaisin Git Bashiin ja syötä:
+* `exit`
 * `vagrant halt`
 * `vagrant up`
 
