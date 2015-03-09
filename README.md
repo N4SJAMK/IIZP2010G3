@@ -45,6 +45,8 @@ Otetaan PHP käyttöön kotikansion public_html:ään:
 #</IfModule>
 ```
 
+* `CTRL + X`, `Y` ja `Enter` tallentaa
+
 Sitten muokataan vagrantfile, joka löytyy sieltä mihin vagrantin laitoit (Windowsin puolella siis):
 
 * Avaa `vagrantfile` tekstieditorilla
