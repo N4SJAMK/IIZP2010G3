@@ -14,8 +14,8 @@ class TestModel implements Model{
 		$this->number = rand(0,100);
 	}
 
-	public function getUkot(){
-		$collection = $this->db->ukot;
+	public function getBoards(){
+		$collection = $this->db->boards;
 		$cursor = $collection->find();
 		return $cursor;
 	}

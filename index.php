@@ -20,8 +20,8 @@ function __autoload($className){
 }
 
 # Database connection
-$mongo = new MongoClient();
-$database = $mongo->jokutesti;
+$mongo = new MongoClient("mongodb://localhost:27017/teamboard-dev");
+$database = $mongo->selectDB("teamboard-dev");
 
 # Router, handles paths
 $router = new Router();
