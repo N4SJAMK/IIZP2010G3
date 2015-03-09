@@ -7,6 +7,7 @@
 
 Asennetaan Apache ja PHP:
 
+* `sudo apt-get update`
 * `sudo apt-get install apache2`
 * `sudo apt-get install php5 php5-mongo`
 
@@ -14,13 +15,13 @@ Sitten conffataan apachea hieman:
 
 * `sudo nano /etc/apache2/ports.conf`
 * Muokkaa `Listen 80` => `Listen 8080`
-* `CTRL + X` ja `Enter` tallentaa
+* `CTRL + X`, `Y` ja `Enter` tallentaa
 
 Hieman lisää apachen konffausta:
 
 * `sudo nano /etc/apache2/sites-available/000-default.conf`
 * Muokkaa `<VirtualHost *:80>` => `<VirtualHost *:8080>`
-* `CTRL + X` ja `Enter` tallentaa
+* `CTRL + X`, `Y` ja `Enter` tallentaa
 
 Sitten enabloidaan userdir moduuli
 
