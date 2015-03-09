@@ -23,9 +23,16 @@ Hieman lisää apachen konffausta:
 * Muokkaa `<VirtualHost *:80>` => `<VirtualHost *:8080>`
 * `CTRL + X`, `Y` ja `Enter` tallentaa
 
-Sitten enabloidaan userdir moduuli
+Ja vielä yksi pikkujuttu:
+
+* `sudo nano /etc/apache2/apache2.conf`
+* Kirjoita ihan loppuun uudelle riville: `ServerName localhost`
+* `CTRL + X`, `Y` ja `Enter` tallentaa
+
+Sitten enabloidaan pari moduulia
 
 * `sudo a2enmod userdir`
+* `sudo a2enmod rewrite`
 
 Luodaan kansio kaikelle kamalle kotikansioon
 
