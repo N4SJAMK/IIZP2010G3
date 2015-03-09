@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /~vagrant/IIZP2010G3
+RewriteCond %{QUERY_STRING} (.*)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?_route=$1&%1 [L]

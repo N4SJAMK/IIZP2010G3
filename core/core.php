@@ -87,7 +87,7 @@ final class Front{
 #######
 
 interface Model{
-	public function __construct(MySQLDatabase $database, Array &$models=null);
+	public function __construct(MongoDB $db, Array &$models=null);
 }
 
 # VIEW

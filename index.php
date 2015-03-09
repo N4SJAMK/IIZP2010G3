@@ -20,7 +20,8 @@ function __autoload($className){
 }
 
 # Database connection
-$database = new PDO();
+$mongo = new MongoClient();
+$database = $mongo->jokutesti;
 
 # Router, handles paths
 $router = new Router();

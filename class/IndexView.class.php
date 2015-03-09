@@ -6,7 +6,7 @@ class IndexView extends View{
 
 		return replace_tags($this->getHTML("index.php"),
 			array(
-				"somenumber"=>$this->models["TestModel"]->number;
+				"somenumber"=>$this->models["TestModel"]->number
 			)
 		);
 	}

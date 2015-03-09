@@ -9,7 +9,7 @@
 <body>
 
 <div id="wrapper">
-	<h1>Good morning</h1>
+	<h1>Main title</h1>
 	<main>{content}</main>
 	<footer>Copyright &copy; 2015 TEAM3</footer>
 </div>
