@@ -4,7 +4,7 @@ class AnotherPageView extends View{
 	public function output(){
 		$this->setLayoutTag("title","Anotherpage - Contriboard Adminpanel");
 
-		return $this->showAsTable($this->models["TestModel"]->getUkot());
+		return "Something from mongodb (db: jokutesti, collection: ukot): ".$this->showAsTable($this->models["TestModel"]->getUkot());
 	}
 
 	private function showAsTable($cursor){
