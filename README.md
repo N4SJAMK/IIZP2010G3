@@ -23,9 +23,16 @@ Hieman lisää apachen konffausta:
 * Muokkaa `<VirtualHost *:80>` => `<VirtualHost *:8080>`
 * `CTRL + X`, `Y` ja `Enter` tallentaa
 
-Sitten enabloidaan userdir moduuli
+Ja vielä yksi pikkujuttu:
+
+* `sudo nano /etc/apache2/apache2.conf`
+* Kirjoita ihan loppuun uudelle riville: `ServerName localhost`
+* `CTRL + X`, `Y` ja `Enter` tallentaa
+
+Sitten enabloidaan pari moduulia
 
 * `sudo a2enmod userdir`
+* `sudo a2enmod rewrite`
 
 Luodaan kansio kaikelle kamalle kotikansioon
 
@@ -65,6 +72,10 @@ Voidaan vielä ottaa itse projekti sinne public_html kansioon. Avaa uusi Git Bas
 
 * `git clone https://github.com/N4SJAMK/IIZP2010G3.git`
 * Todennäköisesti kysyy sinun Git-käyttäjätunnusta ja salasanaa, annat ne
+
+Testaa, onko kaikki ok:
+
+* Avaa selain ja mene osoitteeseen `localhost:8080/~vagrant/`
 
 Jos apache ei käynnisty itse tai haluat sen muuten vaan bootata:
 
