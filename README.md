@@ -66,6 +66,10 @@ Voidaan vielä ottaa itse projekti sinne public_html kansioon. Avaa uusi Git Bas
 * `git clone https://github.com/N4SJAMK/IIZP2010G3.git`
 * Todennäköisesti kysyy sinun Git-käyttäjätunnusta ja salasanaa, annat ne
 
+Testaa, onko kaikki ok:
+
+* Avaa selain ja mene osoitteeseen `localhost:8080/~vagrant/`
+
 Jos apache ei käynnisty itse tai haluat sen muuten vaan bootata:
 
 * `sudo /etc/init.d/apache2 start`
