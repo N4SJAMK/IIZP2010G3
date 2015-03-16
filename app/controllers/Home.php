@@ -10,10 +10,10 @@ class Home extends Controller{
 
 		# If logged -> show front page
 		# Not logged -> show login screen
-		if($session->isLogged() === false){
-			$this->view("home/login");
-		}else{
+		if($session->isLogged() === true){
 			$this->view("home/index");
+		}else{
+			$this->view("home/login");
 		}
 	}
 
@@ -22,8 +22,7 @@ class Home extends Controller{
 
 		# Try to login
 		if($session->isLogged() === false){
-			$data = $_POST;
-			$status = $session->login($data["email"], $data["password"]);
+			$session->login($this->data("email"), $this->data("password"));
 		}
 		
 		# Call the index method (frontpage)

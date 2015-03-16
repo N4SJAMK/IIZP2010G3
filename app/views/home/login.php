@@ -1,4 +1,4 @@
-<p>Home/index. Login pls.</p>
+<h2>Login</h2>
 
 <form method="POST" action="/home/login">
 	<input type="text" name="email" placeholder="Username..."><br>

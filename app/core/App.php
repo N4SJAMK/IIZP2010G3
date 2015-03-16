@@ -7,9 +7,17 @@ class Application{
 	protected $action = "index";
 	protected $params = array();
 
+	# Vars
+	private $db;
+
 	public function __construct($db){
+		$this->db = $db;
+		$this->loadPage($this->getPath());
+	}
+
+	private function loadPage($url){
 		# Parse URL
-		$urlArr = $this->parseURL();
+		$urlArr = $this->parseURL($url);
 
 		# Check if URL has all we need, otherwise use defaults
 		$controller = (isset($urlArr[0])) ? array_shift($urlArr) : $this->controller;
@@ -23,7 +31,7 @@ class Application{
 		if(file_exists($controllerPath)){
 			include_once $controllerPath;
 			$this->controller = new $controller();
-			$this->controller->createModels($db);
+			$this->controller->createModels($this->db);
 
 			# Call the action
 			if(method_exists($this->controller, $action)){
@@ -31,7 +39,8 @@ class Application{
 				call_user_func_array(array($this->controller, $action), $params);
 				$output = ob_get_contents();
 				ob_end_clean();
-				$this->output($this->prepareOutput($output));
+
+				$this->output($output);
 			}
 		}
 	}
@@ -40,9 +49,9 @@ class Application{
 		return (isset($_GET["path"])) ? filter_var(rtrim($_GET["path"], "/"), FILTER_SANITIZE_URL) : "";
 	}
 
-	private function parseURL(){
+	private function parseURL($url){
 		if(isset($_GET["path"])){
-			return explode("/", $this->getPath());
+			return explode("/", $url);
 		}
 	}
 
@@ -58,7 +67,12 @@ class Application{
 	}
 
 	private function output($content){
+		ob_start();
 		include $this->layout;
+		$output = ob_get_contents();
+		ob_end_clean();
+
+		echo $this->prepareOutput($output);
 	}
 }
 
