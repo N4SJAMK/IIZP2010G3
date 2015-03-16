@@ -2,6 +2,7 @@
 
 class Application{
 	# Default values
+	private $layout = "../app/views/layout.php";
 	protected $controller = "Home";
 	protected $action = "index";
 	protected $params = array();
@@ -30,7 +31,7 @@ class Application{
 				call_user_func_array(array($this->controller, $action), $params);
 				$output = ob_get_contents();
 				ob_end_clean();
-				echo $this->prepareOutput($output);
+				$this->output($this->prepareOutput($output));
 			}
 		}
 	}
@@ -54,6 +55,10 @@ class Application{
 			"/(href|src|action)\=(\"|\'){$pregPath}(http\:\/\/|https\:\/\/|www\.)([^\>\n\r\"]*)(\"|\')/i"=>"$1=$2$3$4$5" # external links (fix)
 		);
 		return preg_replace(array_keys($replacements), $replacements, $buffer);
+	}
+
+	private function output($content){
+		include $this->layout;
 	}
 }
 
