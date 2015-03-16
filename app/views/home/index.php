@@ -1,0 +1,1 @@
+<p>Welcome. <a href="/home/logout">Logout</a></p>
