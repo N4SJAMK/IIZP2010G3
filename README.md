@@ -75,7 +75,7 @@ Voidaan vielä ottaa itse projekti sinne public_html kansioon. Avaa uusi Git Bas
 
 Testaa, onko kaikki ok:
 
-* Avaa selain ja mene osoitteeseen `localhost:8080/~vagrant/`
+* Avaa selain ja mene osoitteeseen `http://localhost:8080/~vagrant/IIZP2010G3/public/`
 
 Jos apache ei käynnisty itse tai haluat sen muuten vaan bootata:
 
