@@ -11,8 +11,8 @@
 foreach($data["userlist"] as $user){
 	echo "<tr>".
 	"<td>".$user["email"]."</td>".
-	"<td>xx (todo)</td>".
-	"<td><a href=\"#\">Show boards</a> - <a href=\"#\">Change password</a> - <a href=\"#\">Lock</a> - <a href=\"#\">Delete</a></td>".
+	"<td>".$user["boardCount"]."</td>".
+	"<td><a href=\"/boards/byuser/".$user["_id"]."\">Show boards</a> - <a href=\"#\">Change password</a> - <a href=\"#\">Lock</a> - <a href=\"#\">Delete</a></td>".
 	"</tr>";
 }
 

@@ -10,7 +10,7 @@
 
 foreach($data["boardlist"] as $board){
 	echo "<tr>".
-	"<td>xx (todo)</td>".
+	"<td>".$board["createdBy"]["email"]."</td>".
 	"<td>".$board["name"]."</td>".
 	"<td>".$board["accessCode"]."</td>".
 	"<td>xx (todo)</td>".

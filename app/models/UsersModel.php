@@ -7,9 +7,9 @@ class UsersModel{
 		$this->db = $db;
 	}
 
-	public function getAll(){
+	public function get($filter = array(), $one = false, $asArray = true){
 		$collection = $this->db->users;
-		return $collection->find();
+		return ($one === false) ? (($asArray === true) ? iterator_to_array($collection->find($filter)) : $collection->find($filter)) : $collection->findOne($filter);
 	}
 }
 
