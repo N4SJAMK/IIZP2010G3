@@ -13,7 +13,8 @@ foreach($data["boardlist"] as $board){
 	"<td>".$board["createdBy"]["email"]."</td>".
 	"<td>".$board["name"]."</td>".
 	"<td>".$board["accessCode"]."</td>".
-	"<td>xx (todo)</td>".
+	"<td>".$board["ticketCount"]."</td>".
+	"<td>".$board["boardSize"]." Bytes (?)</td>".
 	"<td><a href=\"#\">Empty</a> - <a href=\"#\">Remove</a></td>".
 	"</tr>";
 }
