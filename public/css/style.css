@@ -1,0 +1,133 @@
+body{
+	background-color: #190C21;
+	color: #FFFFFF;
+	font-family: 'Lato';
+}
+
+input[type="button"],input[type="submit"]{
+	border: 0px;
+	border-bottom: 2px solid #619b98;
+	border-radius: 5px;
+	background-color: #72bdbb;
+	color: #FFFFFF;
+	font-family: 'Lato';
+	height: 36px;
+	padding: 1px 6px;
+	letter-spacing: 1px;
+
+	transition: background-color 0.2s;
+}
+
+input[type="button"]:hover,input[type="submit"]:hover{
+	background-color: #619b98;
+	cursor: pointer;
+}
+
+input:first-child{
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+input:last-child{
+	border-radius: 0px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+input{
+	border: 1px solid #EDEDED;
+	border-radius: 0px;
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+h1{
+	font-family: 'Lobster';
+	letter-spacing: 1px;
+	position: relative;
+}
+h1:before{
+	content: '';
+	border: 8px solid #FFFFFF;
+	border-top: 8px solid #72BDBB;
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	vertical-align: baseline;
+	margin-bottom: -12px;
+	margin-right: 20px;
+}
+h1:after{
+	content: 'Demo';
+	font-family: 'Lato';
+	font-size: 10px;
+	color: #EB584A;
+	text-transform: uppercase;
+	position: absolute;
+	bottom: -5px;
+	right: -1px;
+}
+
+a{
+	color: #4F819A;
+}
+
+nav ul{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+nav ul li{
+	display: inline-block;
+}
+
+nav ul li a{
+	display: block;
+	padding: 10px 25px 10px 25px;
+	background-color: #72BDBB;
+	color: #ffffff;
+	text-decoration: none;
+	border-bottom: 2px solid #619b98;
+
+	transition: background-color 0.2s;
+}
+
+nav ul li a:hover{
+	background-color: #619B98;
+}
+
+nav ul li a.active{
+	background-color: #FFFFFF;
+	border-bottom: 2px solid #EB584A;
+	color: #221a26;
+}
+
+nav ul li:first-child a{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+nav ul li:last-child a{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+table{
+	width: 100%;
+}
+
+#wrapper{
+	width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.darkText{
+	color: #221a26;
+}
+
+#wrapper.loginBox{
+	width: 300px;
+}

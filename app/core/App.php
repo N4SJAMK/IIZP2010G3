@@ -3,6 +3,7 @@
 class Application{
 	# Default values
 	private $layout = "../app/views/layout.php";
+	private $navigation = "../app/views/navigation.php";
 	protected $controller = "Home";
 	protected $action = "index";
 	protected $params = array();
@@ -30,6 +31,7 @@ class Application{
 		# Create controller
 		if(file_exists($controllerPath)){
 			include_once $controllerPath;
+
 			$this->controller = new $controller();
 			$this->controller->createModels($this->db);
 
@@ -40,9 +42,20 @@ class Application{
 				$output = ob_get_contents();
 				ob_end_clean();
 
-				$this->output($output);
+				# Get view settings from the controller
+				$viewSettings = $this->controller->getViewSettings();
+
+				# Output
+				$this->output($output,
+					($viewSettings["navigation"]) ? $this->getNavigation() : "",
+					implode(" ", $viewSettings["classes"])
+				);
 			}
 		}
+	}
+
+	private function getNavigation(){
+		return file_get_contents($this->navigation);
 	}
 
 	private function getPath(){
@@ -66,7 +79,7 @@ class Application{
 		return preg_replace(array_keys($replacements), $replacements, $buffer);
 	}
 
-	private function output($content){
+	private function output($content, $navigation, $extraClass){
 		ob_start();
 		include $this->layout;
 		$output = ob_get_contents();

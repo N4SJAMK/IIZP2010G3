@@ -2,6 +2,7 @@
 
 class Users extends Controller{
 	public function __construct(){
+		parent::__construct();
 		$this->addModel("Session");
 		$this->addModel("UsersModel");
 		$this->addModel("BoardsModel");

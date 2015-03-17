@@ -2,6 +2,7 @@
 
 class Home extends Controller{
 	public function __construct(){
+		parent::__construct();
 		$this->addModel("Session");
 	}
 
@@ -13,6 +14,8 @@ class Home extends Controller{
 		if($session->isLogged() === true){
 			$this->view("home/index");
 		}else{
+			$this->addStyleClass("loginBox");
+			$this->setSetting("navigation", false);
 			$this->view("home/login");
 		}
 	}
