@@ -9,7 +9,9 @@ class Boards extends Controller{
 		$this->addModel("TicketsModel");
 	}
 
-	private function getList($filter = array()){
+	private function getList($filter = array(), $withSummary = true){
+		$util = new Util();
+
 		# Models to be needed
 		$boards = $this->model("BoardsModel");
 		$users = $this->model("UsersModel");
@@ -29,9 +31,13 @@ class Boards extends Controller{
 			$boardTickets = $tickets->get(array(
 				"board"=>$board["_id"]
 			), false, false);
+
+			# Add new fields
 			$board["ticketCount"] = $boardTickets->count();
 			$board["boardSize"] = $this->calculateBoardSize($boardTickets);
 		}
+
+		#array_push($list, $util->createSummary($list));
 
 		return $list;
 	}
@@ -39,7 +45,7 @@ class Boards extends Controller{
 	private function calculateBoardSize($boardTickets){
 		$result = 0;
 		foreach($boardTickets as $ticket){
-			$result = $result + mb_strlen($ticket["content"]);
+			$result = $result + mb_strlen($ticket["content"], "8bit");
 		}
 		return $result;
 	}
@@ -56,7 +62,8 @@ class Boards extends Controller{
 	public function index(){
 		if($this->userMayEnter() === true){
 			$this->view("boards/index", array(
-				"boardlist"=>$this->getList()
+				"boardlist"=>$this->getList(),
+				"user"=>"all users"
 			));
 		}else{
 			$this->view("errors/denied");
@@ -68,7 +75,8 @@ class Boards extends Controller{
 			$this->view("boards/index", array(
 				"boardlist"=>$this->getList(array(
 					"createdBy"=>(new MongoId($id))
-				))
+				)),
+				"user"=>"single user"
 			));
 		}else{
 			$this->view("errors/denied");

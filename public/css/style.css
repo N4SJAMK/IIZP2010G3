@@ -7,7 +7,6 @@ body{
 input[type="button"],input[type="submit"]{
 	border: 0px;
 	border-bottom: 2px solid #619b98;
-	border-radius: 5px;
 	background-color: #72bdbb;
 	color: #FFFFFF;
 	font-family: 'Lato';
@@ -29,7 +28,7 @@ input:first-child{
 }
 
 input:last-child{
-	border-radius: 0px;
+	/*border-radius: 0px;*/
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
@@ -180,4 +179,18 @@ table tbody tr:hover{
 
 #wrapper.loginBox{
 	width: 300px;
+}
+
+.dataTables_filter{
+	position: relative;
+	text-align: right;
+}
+
+.dataTables_filter input{
+	margin-bottom: 10px;
+	width: 250px;
+}
+
+.dataTable{
+	width: 100%;
 }
