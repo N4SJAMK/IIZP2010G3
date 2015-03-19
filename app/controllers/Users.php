@@ -27,6 +27,7 @@ class Users extends Controller{
 				"userlist"=>$list
 			));
 		}else{
+			$this->setSetting("navigation", false);
 			$this->view("errors/denied");
 		}
 	}

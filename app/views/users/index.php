@@ -1,6 +1,4 @@
-<h2>Users</h2>
-
-<table>
+<table data-pseudo-content="Table of users">
 <thead>
 <tr>
 <td>Email (username)</td><td>Boards</td><td>Actions</td>
@@ -12,7 +10,7 @@ foreach($data["userlist"] as $user){
 	echo "<tr>".
 	"<td>".$user["email"]."</td>".
 	"<td>".$user["boardCount"]."</td>".
-	"<td><a href=\"/boards/byuser/".$user["_id"]."\">Show boards</a> - <a href=\"#\">Change password</a> - <a href=\"#\">Lock</a> - <a href=\"#\">Delete</a></td>".
+	"<td><a href=\"/boards/byuser/".$user["_id"]."\" class=\"fa fa-table\" title=\"Show boards\"></a><a class=\"fa fa-key\" title=\"Change password\"></a><a class=\"fa fa-star\" title=\"Add as admin\"></a><a class=\"fa fa-lock\" title=\"Lock\"></a><a class=\"fa fa-trash-o\" title=\"Remove\"></a></td>".
 	"</tr>";
 }
 

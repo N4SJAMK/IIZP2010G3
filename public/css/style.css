@@ -4,7 +4,9 @@ body{
 	font-family: 'Lato';
 }
 
-input[type="button"],input[type="submit"]{
+/* INPUT STYLES */
+
+input[type="button"],input[type="submit"],button{
 	border: 0px;
 	border-bottom: 2px solid #619b98;
 	background-color: #72bdbb;
@@ -17,29 +19,41 @@ input[type="button"],input[type="submit"]{
 	transition: background-color 0.2s;
 }
 
-input[type="button"]:hover,input[type="submit"]:hover{
+input[type="button"]:hover,input[type="submit"]:hover,button:hover{
 	background-color: #619b98;
 	cursor: pointer;
 }
 
-input:first-child{
+form input:first-child{
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
-input:last-child{
+form input:last-child{
 	/*border-radius: 0px;*/
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
 
-input{
+form input, input{
 	border: 1px solid #EDEDED;
 	border-radius: 0px;
 	padding: 8px;
 	width: 100%;
 	box-sizing: border-box;
 }
+
+input, button{
+	border-radius: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+input:focus,button:focus{
+	outline: none;
+}
+
+/* GENERAL STYLES */
 
 h1{
 	font-family: 'Lobster';
@@ -71,6 +85,8 @@ h1:after{
 a{
 	color: #4F819A;
 }
+
+/* NAVIGATION STYLES */
 
 nav ul{
 	margin: 0px;
@@ -114,10 +130,22 @@ nav ul li:last-child a{
 	border-bottom-right-radius: 5px;
 }
 
+/* TABLE STYLES */
+
+table:before{
+	content: attr(data-pseudo-content);
+	position: absolute;
+	top: -40px;
+	left: 0px;
+	font-size: 150%;
+	font-weight: bold;
+}
+
 table{
 	width: 100%;
 	border: none;
 	border-collapse: collapse;
+	position: relative;
 }
 
 table thead{
@@ -133,6 +161,11 @@ table td{
 table thead tr td{
 	padding: 8px;
 	border-top: 0px;
+	cursor: pointer;
+}
+
+table thead tr td:hover{
+	background-color: rgba(255,255,255,0.1);
 }
 
 table tr td:first-child{
@@ -164,8 +197,46 @@ table tbody tr:nth-child(2n+1){
 }
 
 table tbody tr:hover{
-	background-color: #221A26;
+	/*background-color: #221A26;*/
 }
+
+/* TABLE ACTION-BUTTON STYLES */
+
+table tbody tr td:last-child{
+	width: 190px;
+	text-align: center;
+}
+
+table tbody tr td:last-child a.fa{
+	font-size: 15px;
+	background-color: #EB584A;
+	border-bottom: 2px solid #9b3934;
+	color: #ffffff;
+	width: 24px;
+	text-align: center;
+	border-radius: 5px;
+	padding: 4px;
+	cursor: pointer;
+
+	transition: background-color 0.2s;
+	margin-right: 5px;
+}
+
+table tbody tr td:last-child a.fa:last-child{
+	margin-right: 0px;
+}
+
+table tbody tr td:last-child a.fa:hover{
+	background-color: #9b3934;
+}
+
+/* OUTSIDE TABLE */
+
+.tableActions{
+	text-align: right;
+}
+
+/* WRAPPER STYLES */
 
 #wrapper{
 	width: 900px;
@@ -173,12 +244,14 @@ table tbody tr:hover{
 	margin-left: auto;
 }
 
-.darkText{
-	color: #221a26;
-}
-
 #wrapper.loginBox{
 	width: 300px;
+}
+
+/* DATATABLE STYLES */
+
+.dataTables_wrapper{
+	margin-top: 18px;
 }
 
 .dataTables_filter{
@@ -191,6 +264,60 @@ table tbody tr:hover{
 	width: 250px;
 }
 
+.dataTables_info{
+	font-size: 10px;
+	background-color: #4F819A;
+	padding: 3px;
+	border-radius: 2px;
+	margin-bottom: 10px;
+}
+
 .dataTable{
 	width: 100%;
+}
+
+/* DIALOG STYLES */
+
+.ui-dialog{
+	color: #221A26;
+	border: 2px solid #EB584A;
+
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: 0 0 20px #000000;
+	cursor: default;
+}
+.ui-dialog:focus{
+	outline: none;
+}
+
+.ui-dialog-titlebar{
+	padding: 8px;
+	background-color: #EB584A;
+	font-weight: bold;
+	color: #ededed;
+}
+
+.ui-dialog-titlebar-close{
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	padding: 5px;
+	height: 28px;
+}
+
+.ui-dialog-content{
+	padding: 8px;
+	background-color: #ffffff;
+}
+
+.ui-dialog-buttonpane{
+	background-color: #ededed;
+	text-align: right;
+	padding: 5px;
+}
+
+.ui-dialog-buttonpane button{
+	border-radius: 5px;
+	margin: 3px;
 }

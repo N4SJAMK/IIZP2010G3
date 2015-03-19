@@ -3,9 +3,11 @@
 <head>
 	<!-- SCRIPTS -->
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 	<script src="http://cdn.datatables.net/1.10.5/js/jquery.dataTables.min.js"></script>
 	<script src="/js/navigation.js"></script>
 	<script src="/js/dataTable.js"></script>
+	<script src="/js/dialogs.js"></script>
 
 	<!-- STYLES -->
 	<link href="/css/fonts.css" rel="stylesheet">

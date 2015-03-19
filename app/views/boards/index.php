@@ -1,6 +1,4 @@
-<h2>Boards by <?php echo $data["user"]; ?></h2>
-
-<table>
+<table data-pseudo-content="Table of boards by <?php echo $data["user"]; ?>">
 <thead>
 <tr>
 <td>Owner</td><td>Name</td><td>Access code</td><td>Tickets</td><td>Size</td><td>Actions</td>
@@ -17,7 +15,7 @@ foreach($data["boardlist"] as $board){
 	"<td>".$board["accessCode"]."</td>".
 	"<td>".$board["ticketCount"]."</td>".
 	"<td>".$formatter->filesize($board["boardSize"])."</td>".
-	"<td><a href=\"#\">Empty</a> - <a href=\"#\">Remove</a></td>".
+	"<td><a class=\"fa fa-square-o\" title=\"Empty\"></a><a class=\"fa fa-trash-o\" title=\"Remove\"></a></td>".
 	"</tr>";
 }
 

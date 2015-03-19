@@ -66,6 +66,7 @@ class Boards extends Controller{
 				"user"=>"all users"
 			));
 		}else{
+			$this->setSetting("navigation", false);
 			$this->view("errors/denied");
 		}
 	}
@@ -79,6 +80,7 @@ class Boards extends Controller{
 				"user"=>"single user"
 			));
 		}else{
+			$this->setSetting("navigation", false);
 			$this->view("errors/denied");
 		}
 	}
