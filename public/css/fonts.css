@@ -9,3 +9,9 @@
 	src: url(../fonts/Lobster/Lobster_1.3.otf);
 	font-weight: normal;
 }
+
+@font-face {
+	font-family: 'Envy Code R';
+	src: url(../fonts/EnvyCodeR.ttf);
+	font-weight: normal;
+}

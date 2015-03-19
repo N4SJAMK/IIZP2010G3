@@ -42,14 +42,17 @@ class Application{
 				$output = ob_get_contents();
 				ob_end_clean();
 
-				# Get view settings from the controller
-				$viewSettings = $this->controller->getViewSettings();
+				# Display everything only, if the action has a view
+				if(strlen($output) > 0){
+					# Get view settings from the controller
+					$viewSettings = $this->controller->getViewSettings();
 
-				# Output
-				$this->output($output,
-					($viewSettings["navigation"]) ? $this->getNavigation() : "",
-					implode(" ", $viewSettings["classes"])
-				);
+					# Output
+					$this->output($output,
+						($viewSettings["navigation"]) ? $this->getNavigation() : "",
+						implode(" ", $viewSettings["classes"])
+					);
+				}
 			}
 		}
 	}

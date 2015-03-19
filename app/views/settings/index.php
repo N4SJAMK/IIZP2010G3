@@ -17,12 +17,16 @@ foreach($data["userlist"] as $user){
 </table>
 
 <div class="tableActions">
-	<button class="singlebutton">
+	<button class="actionAddAdmin">
 		Add admin
 	</button>
 </div>
 
-<p>Here should be the ablity to back-up database and maybe cron to make scheduled back-ups.</p>
+<h2>Database</h2>
+<p>This will back up the database into the path defined in <span class="code">PATH_DB_BACKUP</span> in <span class="code">app/settings.php</span> which is now <span class="code"><?php echo $data["backuppath"]; ?></span>. Each back-up will have its own sub directory in this directory.</p>
+<button class="actionBackUpNow">
+	Back-up now
+</button>
 
 <!-- Dialogs -->
 <div id="dialog-deleteAdmin" title="Confirm admin remove">
@@ -30,5 +34,9 @@ foreach($data["userlist"] as $user){
 </div>
 
 <div id="dialog-addAdmin" title="Add new admin">
-	<p></p>
+	<p>Form here</p>
+</div>
+
+<div id="dialog-backUpNow" title="Confirm back-up">
+	<p>This will back-up the database into <?php echo $data["backuppath"]; ?></p>
 </div>
