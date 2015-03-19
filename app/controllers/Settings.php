@@ -30,9 +30,21 @@ class Settings extends Controller{
 		$session = $this->model("Session");
 
 		if($session->isLogged()){
+			$util = new Util();
 			$folder = $this->getNewBackUpName();
-			echo exec("mkdir ".PATH_DB_BACKUP.$folder);
-			exec("mongodump --db ".DB_NAME." --out ".PATH_DB_BACKUP.$folder." > /dev/null &");
+
+			$mkdir = $util->commandline("mkdir ".PATH_DB_BACKUP.$folder." 2>&1");
+
+			if($mkdir === true){
+				$mongodump = $util->commandline("mongodump --db ".DB_NAME." --out ".PATH_DB_BACKUP.$folder." 2>&1");
+				if($mongodump === true){
+					$this->ajaxResponse(0); # success
+				}else{
+					$this->ajaxResponse(1, $mongodump);
+				}
+			}else{
+				$this->ajaxResponse(1, $mkdir);
+			}
 		}
 	}
 

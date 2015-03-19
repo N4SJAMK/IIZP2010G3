@@ -148,6 +148,10 @@ table:before{
 	font-weight: bold;
 }
 
+table a{
+	color: #ffffff;
+}
+
 table{
 	width: 100%;
 	border: none;

@@ -16,6 +16,7 @@ class Home extends Controller{
 		}else{
 			$this->addStyleClass("loginBox");
 			$this->setSetting("navigation", false);
+			$this->setSetting("dialogs", false);
 			$this->view("home/login");
 		}
 	}

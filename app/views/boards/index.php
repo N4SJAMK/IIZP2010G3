@@ -15,7 +15,7 @@ foreach($data["boardlist"] as $board){
 	"<td>".$board["accessCode"]."</td>".
 	"<td>".$board["ticketCount"]."</td>".
 	"<td>".$formatter->filesize($board["boardSize"])."</td>".
-	"<td><a class=\"fa fa-square-o\" title=\"Empty\"></a><a class=\"fa fa-trash-o\" title=\"Remove\"></a></td>".
+	"<td><a class=\"fa fa-square-o actionEmptyBoard\" title=\"Empty\"></a><a class=\"fa fa-trash-o actionDeleteBoard\" title=\"Remove\"></a></td>".
 	"</tr>";
 }
 

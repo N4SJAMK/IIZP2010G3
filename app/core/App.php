@@ -4,6 +4,7 @@ class Application{
 	# Default values
 	private $layout = "../app/views/layout.php";
 	private $navigation = "../app/views/navigation.php";
+	private $dialogs = "../app/views/dialogs.php";
 	protected $controller = "Home";
 	protected $action = "index";
 	protected $params = array();
@@ -47,10 +48,17 @@ class Application{
 					# Get view settings from the controller
 					$viewSettings = $this->controller->getViewSettings();
 
+					# Navigation to use, classes and dialogs
+					$navigation = ($viewSettings["navigation"]) ? $this->getNavigation() : "";
+					$dialogs = ($viewSettings["dialogs"]) ? $this->getDialogs() : "";
+					$classes = implode(" ", $viewSettings["classes"]);
+
 					# Output
 					$this->output($output,
-						($viewSettings["navigation"]) ? $this->getNavigation() : "",
-						implode(" ", $viewSettings["classes"])
+						$navigation,
+						$dialogs,
+						$classes,
+						$viewSettings
 					);
 				}
 			}
@@ -59,6 +67,10 @@ class Application{
 
 	private function getNavigation(){
 		return file_get_contents($this->navigation);
+	}
+
+	private function getDialogs(){
+		return file_get_contents($this->dialogs);
 	}
 
 	private function getPath(){
@@ -82,11 +94,15 @@ class Application{
 		return preg_replace(array_keys($replacements), $replacements, $buffer);
 	}
 
-	private function output($content, $navigation, $extraClass){
-		ob_start();
-		include $this->layout;
-		$output = ob_get_contents();
-		ob_end_clean();
+	private function output($content, $navigation, $dialogs, $extraClass, $viewSettings){
+		if($viewSettings["layout"] === true){
+			ob_start();
+			include $this->layout;
+			$output = ob_get_contents();
+			ob_end_clean();
+		}else{
+			$output = $content;
+		}
 
 		echo $this->prepareOutput($output);
 	}

@@ -1,6 +1,4 @@
 jQuery(document).ready(function(){
-	var APP_PATH = '/~vagrant/IIZP2010G3/public';
-
 	// Admin add
 	$('#dialog-addAdmin').dialog({
 		autoOpen: false,
@@ -8,7 +6,6 @@ jQuery(document).ready(function(){
 		buttons:{
 			'Add': function(){
 				alert('todo');
-				$(this).dialog('close');
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -23,7 +20,48 @@ jQuery(document).ready(function(){
 		buttons:{
 			'Remove': function(){
 				alert('todo');
+			},
+			'Cancel': function(){
 				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Password change
+	$('#dialog-changePassword').dialog({
+		autoOpen: false,
+		closeText:'X',
+		buttons:{
+			'Save': function(){
+				alert('todo');
+			},
+			'Cancel': function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Remove board
+	$('#dialog-deleteBoard').dialog({
+		autoOpen: false,
+		closeText:'X',
+		buttons:{
+			'Remove': function(){
+				alert('todo');;
+			},
+			'Cancel': function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Empty board
+	$('#dialog-emptyBoard').dialog({
+		autoOpen: false,
+		closeText:'X',
+		buttons:{
+			'Empty': function(){
+				alert('todo');;
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -37,17 +75,20 @@ jQuery(document).ready(function(){
 		closeText: 'X',
 		buttons:{
 			'Back-up': function(){
-				var self = $(this);
-				$.ajax({
-					url:APP_PATH+'/settings/backup',
-					success:function(){
-						self.dialog('close');
-					}
-				});
-
-				$(this).dialog('close');
+				dialogAjax.request(this, '/settings/backup');
 			},
 			'Cancel': function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Error dialog
+	$('#dialog-msg').dialog({
+		autoOpen: false,
+		closeText:'X',
+		buttons:{
+			'Ok': function(){
 				$(this).dialog('close');
 			}
 		}
@@ -64,5 +105,17 @@ jQuery(document).ready(function(){
 
 	$('.actionBackUpNow').click(function(){
 		$('#dialog-backUpNow').dialog('open');
+	});
+
+	$('.actionChangePassword').click(function(){
+		$('#dialog-changePassword').dialog('open');
+	});
+
+	$('.actionDeleteBoard').click(function(){
+		$('#dialog-deleteBoard').dialog('open');
+	});
+
+	$('.actionEmptyBoard').click(function(){
+		$('#dialog-emptyBoard').dialog('open');
 	});
 });

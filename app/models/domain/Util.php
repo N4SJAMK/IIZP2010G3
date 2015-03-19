@@ -12,6 +12,20 @@ class Util{
 		}
 		return $summary;
 	}
+
+	public function commandline($cmd){
+		exec($cmd, $output, $failure);
+
+		if(!$failure){
+			return true;
+		}else{
+			if(count($output) > 0){
+				return implode("<br>", $output);
+			}else{
+				return "Unknown error with command: ".$cmd;
+			}
+		}
+	}
 }
 
 ?>

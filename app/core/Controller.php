@@ -12,6 +12,8 @@ abstract class Controller{
 
 		# Display navigation
 		$this->viewSettings["navigation"] = true;
+		$this->viewSettings["layout"] = true;
+		$this->viewSettings["dialogs"] = true;
 	}
 
 	# Adds a model
@@ -43,6 +45,16 @@ abstract class Controller{
 	# Adds CSS class to wrapper
 	protected function addStyleClass($classname){
 		array_push($this->viewSettings["classes"], $classname);
+	}
+
+	# To respond with a JSON object
+	protected function ajaxResponse($error, $message="", $data=array()){
+		# Display only this
+		exit(json_encode(array(
+			"error"=>$error,
+			"message"=>$message,
+			"data"=>$data
+		)));
 	}
 
 	# Gets CSS style classes
