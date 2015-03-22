@@ -27,6 +27,11 @@ class AdminsModel{
 		return $result;
 	}
 
+	public function count($filter = array()){
+		$collection = $this->db->admins;
+		return $collection->count($filter);
+	}
+
 	private function getUser($id){
 		$users = $this->db->users;
 		return $users->findOne(array(

@@ -4,6 +4,10 @@ class Home extends Controller{
 	public function __construct(){
 		parent::__construct();
 		$this->addModel("Session");
+		$this->addModel("UsersModel");
+		$this->addModel("AdminsModel");
+		$this->addModel("BoardsModel");
+		$this->addModel("TicketsModel");
 	}
 
 	public function index(){
@@ -12,7 +16,19 @@ class Home extends Controller{
 		# If logged -> show front page
 		# Not logged -> show login screen
 		if($session->isLogged() === true){
-			$this->view("home/index");
+			$users = $this->model("UsersModel");
+			$admins = $this->model("AdminsModel");
+			$boards = $this->model("BoardsModel");
+			$tickets = $this->model("TicketsModel");
+
+			$this->view("home/index", array(
+				"count"=>array(
+					"Users"=>$users->count(),
+					"Admins"=>$admins->count(),
+					"Boards"=>$boards->count(),
+					"Tickets"=>$tickets->count()
+				)
+			));
 		}else{
 			$this->addStyleClass("loginBox");
 			$this->setSetting("navigation", false);

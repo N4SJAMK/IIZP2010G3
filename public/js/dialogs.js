@@ -16,6 +16,9 @@ jQuery(document).ready(function(){
 	// Admin delete
 	$('#dialog-deleteAdmin').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
 			'Remove': function(){
@@ -30,13 +33,17 @@ jQuery(document).ready(function(){
 	// Password change
 	$('#dialog-changePassword').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
-			'Save': function(){
+			'Save': function(e){
 				dialogAjax.request(this, {
 					url: '/users/changepassword',
 					data: $('#dialog-changePassword form').serialize()
 				});
+				$('#dialog-changePassword form input').val('');
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -47,6 +54,9 @@ jQuery(document).ready(function(){
 	// Remove board
 	$('#dialog-deleteBoard').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
 			'Remove': function(){
@@ -61,6 +71,9 @@ jQuery(document).ready(function(){
 	// Empty board
 	$('#dialog-emptyBoard').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
 			'Empty': function(){
@@ -75,6 +88,9 @@ jQuery(document).ready(function(){
 	// Back-up
 	$('#dialog-backUpNow').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText: 'X',
 		buttons:{
 			'Back-up': function(){
@@ -88,9 +104,12 @@ jQuery(document).ready(function(){
 		}
 	});
 
-	// Error dialog
+	// Message dialog
 	$('#dialog-msg').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
 			'Ok': function(){

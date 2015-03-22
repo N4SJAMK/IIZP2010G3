@@ -1,3 +1,18 @@
-<h2>Main menu</h2>
+<table data-pseudo-content="Statistics">
+	<thead>
+		<tr>
+			<td>Section</td><td>Amount</td>
+		</tr>
+	</thead>
+	<tbody>
+<?php
 
-<p>Some stats here then...</p>
+foreach($data["count"] as $section => $count){
+	echo "<tr>
+		<td>".$section."</td><td>".$count."</td>
+	</tr>";
+}
+
+?>
+	</tbody>
+</table>

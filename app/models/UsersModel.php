@@ -12,6 +12,11 @@ class UsersModel{
 		return ($one === false) ? (($asArray === true) ? iterator_to_array($collection->find($filter)) : $collection->find($filter)) : $collection->findOne($filter);
 	}
 
+	public function count($filter = array()){
+		$collection = $this->db->users;
+		return $collection->count($filter);
+	}
+
 	public function changePassword($id, $passwordRaw){
 		$salt = bin2hex(mcrypt_create_iv(64, MCRYPT_DEV_RANDOM));
 		$passwordHash = crypt($passwordRaw, "$2a$10$".$salt."$");
