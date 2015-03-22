@@ -11,6 +11,11 @@ Asennetaan Apache ja PHP:
 * `sudo apt-get install apache2`
 * `sudo apt-get install php5 php5-mongo`
 
+Jotta salasanojen vaihto onnistuu, voi olla sinun täytyy vielä asentaa ja enabloida mcrypt moduuli:
+
+* `sudo apt-get install php5-mcrypt`
+* `php5enmod mcrypt`
+
 Sitten conffataan apachea hieman:
 
 * `sudo nano /etc/apache2/ports.conf`

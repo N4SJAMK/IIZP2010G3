@@ -319,11 +319,11 @@ table tbody tr td:last-child a.fa:hover{
 
 .ui-dialog-content{
 	padding: 8px;
-	background-color: #ffffff;
+	background-color: #FFFFFF;
 }
 
 .ui-dialog-buttonpane{
-	background-color: #ededed;
+	background-color: #EDEDED;
 	text-align: right;
 	padding: 5px;
 }

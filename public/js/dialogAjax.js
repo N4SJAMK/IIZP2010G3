@@ -16,19 +16,29 @@ var dialogAjax = (function($, exports){
 		$('#dialog-msg').dialog('open');
 	}
 
-	exports.request = function(self, path){
+	exports.request = function(self, userSettings){
 		var self = $(self);
-
-		// Do the request
-		$.ajax({
+		var settings = {
+			type:'POST',
 			dataType:'json',
-			url:APP_PATH+path,
 			complete:function(){
 				self.dialog('close');
 			},
 			success:_success,
 			error:_error
-		});
+		}
+
+		// Edit settings
+		for(key in userSettings){
+			if(key == 'url'){
+				settings[key] = APP_PATH+userSettings[key]
+			}else{
+				settings[key] = userSettings[key];
+			}
+		}
+
+		// Do the request
+		$.ajax(settings);
 	}
 
 	return exports;

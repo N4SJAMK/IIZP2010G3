@@ -16,7 +16,11 @@
 </div>
 
 <div id="dialog-changePassword" title="Change user's password">
-	<p>Form here</p>
+	<p>Please, type the new password for this user.</p>
+	<form>
+		<input type="hidden" name="userid" value="">
+		<input type="password" name="newpassword" placeholder="New password">
+	</form>
 </div>
 
 <div id="dialog-deleteBoard" title="Confirm board removal">

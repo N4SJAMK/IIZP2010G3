@@ -33,7 +33,10 @@ jQuery(document).ready(function(){
 		closeText:'X',
 		buttons:{
 			'Save': function(){
-				alert('todo');
+				dialogAjax.request(this, {
+					url: '/users/changepassword',
+					data: $('#dialog-changePassword form').serialize()
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -75,7 +78,9 @@ jQuery(document).ready(function(){
 		closeText: 'X',
 		buttons:{
 			'Back-up': function(){
-				dialogAjax.request(this, '/settings/backup');
+				dialogAjax.request(this, {
+					url: '/settings/backup'
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -108,6 +113,8 @@ jQuery(document).ready(function(){
 	});
 
 	$('.actionChangePassword').click(function(){
+		var userid = $(this).closest('tr[data-userid]').attr('data-userid');
+		$('#dialog-changePassword form input[name="userid"]').val(userid);
 		$('#dialog-changePassword').dialog('open');
 	});
 

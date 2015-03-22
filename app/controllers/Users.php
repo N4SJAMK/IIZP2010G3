@@ -31,6 +31,22 @@ class Users extends Controller{
 			$this->view("errors/denied");
 		}
 	}
+
+	public function changepassword(){
+		$session = $this->model("Session");
+
+		if($session->isLogged() === true){
+			$users = $this->model("UsersModel");
+			$changeStatus = $users->changePassword($this->data("userid"), $this->data("newpassword"));
+			if($changeStatus === true){
+				$this->ajaxResponse(0, "Password changed!");
+			}else{
+				$this->ajaxResponse(1, "Failed to change password!");
+			}
+		}else{
+			$this->ajaxResponse(1);
+		}
+	}
 }
 
 ?>
