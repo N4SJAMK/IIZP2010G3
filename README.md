@@ -14,7 +14,7 @@ Asennetaan Apache ja PHP:
 Jotta salasanojen vaihto onnistuu, voi olla sinun täytyy vielä asentaa ja enabloida mcrypt moduuli:
 
 * `sudo apt-get install php5-mcrypt`
-* `php5enmod mcrypt`
+* `sudo php5enmod mcrypt`
 
 Sitten conffataan apachea hieman:
 
