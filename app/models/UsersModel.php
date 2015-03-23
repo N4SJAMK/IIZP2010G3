@@ -30,6 +30,27 @@ class UsersModel{
 		
 		return $status["updatedExisting"];
 	}
+
+	public function remove($filter = null){
+		if(is_array($filter)){
+			$util = new Util();
+			$admins = new AdminsModel($this->db);
+			$boards = new BoardsModel($this->db);
+			$users = $this->db->users;
+
+			# Filter for deleting admin mark and boards
+			$adminsFilter = $util->generateItemFilter($this, $filter, "userid");
+			$boardsFilter = $util->generateItemFilter($this, $filter, "createdBy");
+
+			# Remove user and possible admin mark
+			$admins->remove($adminsFilter);
+			$boards->remove($boardsFilter);
+			$users->remove($filter);
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

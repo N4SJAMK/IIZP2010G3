@@ -20,8 +20,12 @@ class AdminsModel{
 			}
 		}else{
 			$row = $adminsList->getNext();
-			$result = $this->getUser($row["userid"]);
-			$result["adminid"] = $row["_id"];
+			if($row !== null){
+				$result = $this->getUser($row["userid"]);
+				$result["adminid"] = $row["_id"];
+			}else{
+				$result = null;
+			}
 		}
 
 		return $result;
@@ -31,10 +35,23 @@ class AdminsModel{
 		$collection = $this->db->admins;
 		return $collection->count($filter);
 	}
+
+	public function add($userid){
+		$collection = $this->db->admins;
+		$collection->insert(array(
+			"userid"=>new MongoId($userid)
+		));
+		return true;
+	}
 	
-	public function remove($filter = array()){
-		$admins = $this->db->admins;
-		$admins->remove($filter);
+	public function remove($filter = null){
+		if(is_array($filter)){
+			$admins = $this->db->admins;
+			$admins->remove($filter);
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	private function getUser($id){

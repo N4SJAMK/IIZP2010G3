@@ -16,6 +16,16 @@ class TicketsModel{
 		$collection = $this->db->tickets;
 		return $collection->count($filter);
 	}
+
+	public function remove($filter = null){
+		if(is_array($filter)){
+			$collection = $this->db->tickets;
+			$collection->remove($filter);
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

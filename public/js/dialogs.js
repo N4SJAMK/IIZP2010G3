@@ -1,11 +1,40 @@
 jQuery(document).ready(function(){
+	function grabInfoToForm(self, dialog, item){
+		var self = $(self);
+		var itemdata = self.closest('tr[data-'+item+']').attr('data-'+item);
+		$(dialog+' form input[name="'+item+'"]').val(itemdata);
+	}
+
 	// Admin add
 	$('#dialog-addAdmin').dialog({
 		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
 		closeText:'X',
 		buttons:{
 			'Add': function(){
 				alert('todo');
+			},
+			'Cancel': function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Promote
+	$('#dialog-promoteToAdmin').dialog({
+		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
+		closeText:'X',
+		buttons:{
+			'Promote': function(){
+				dialogAjax.request(this, {
+					url: '/settings/addadmin',
+					data: $('#dialog-promoteToAdmin form').serialize()
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -63,7 +92,10 @@ jQuery(document).ready(function(){
 		closeText:'X',
 		buttons:{
 			'Remove': function(){
-				alert('todo');;
+				dialogAjax.request(this, {
+					url: '/boards/remove',
+					data: $('#dialog-deleteBoard form').serialize()
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -80,7 +112,10 @@ jQuery(document).ready(function(){
 		closeText:'X',
 		buttons:{
 			'Empty': function(){
-				alert('todo');;
+				dialogAjax.request(this, {
+					url: '/boards/wipe',
+					data: $('#dialog-emptyBoard form').serialize()
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -99,6 +134,26 @@ jQuery(document).ready(function(){
 			'Back-up': function(){
 				dialogAjax.request(this, {
 					url: '/settings/backup'
+				});
+			},
+			'Cancel': function(){
+				$(this).dialog('close');
+			}
+		}
+	});
+
+	// Remove user
+	$('#dialog-deleteUser').dialog({
+		autoOpen: false,
+		show: {
+			effect: 'drop'
+		},
+		closeText:'X',
+		buttons:{
+			'Remove': function(){
+				dialogAjax.request(this, {
+					url: '/users/remove',
+					data: $('#dialog-deleteUser form').serialize()
 				});
 			},
 			'Cancel': function(){
@@ -126,9 +181,13 @@ jQuery(document).ready(function(){
 		$('#dialog-addAdmin').dialog('open');
 	});
 
+	$('.actionPromoteToAdmin').click(function(){
+		grabInfoToForm(this, '#dialog-promoteToAdmin', 'userid');
+		$('#dialog-promoteToAdmin').dialog('open');
+	});
+
 	$('.actionDeleteAdmin').click(function(){
-		var adminid = $(this).closest('tr[data-adminid]').attr('data-adminid');
-		$('#dialog-deleteAdmin form input[name="adminid"]').val(adminid);
+		grabInfoToForm(this, '#dialog-deleteAdmin', 'adminid');
 		$('#dialog-deleteAdmin').dialog('open');
 	});
 
@@ -137,21 +196,22 @@ jQuery(document).ready(function(){
 	});
 
 	$('.actionChangePassword').click(function(){
-		// Hae käyttäjän id, joka on löytyy rivin data-userid attribuutista
-		var userid = $(this).closest('tr[data-userid]').attr('data-userid');
-		
-		// Aseta userid arvo lomakkeen piilokenttään nimeltä "userid"
-		$('#dialog-changePassword form input[name="userid"]').val(userid);
-		
-		// Avaa dialogi
+		grabInfoToForm(this, '#dialog-changePassword', 'userid');
 		$('#dialog-changePassword').dialog('open');
 	});
 
 	$('.actionDeleteBoard').click(function(){
+		grabInfoToForm(this, '#dialog-deleteBoard', 'boardid');
 		$('#dialog-deleteBoard').dialog('open');
 	});
 
 	$('.actionEmptyBoard').click(function(){
+		grabInfoToForm(this, '#dialog-emptyBoard', 'boardid');
 		$('#dialog-emptyBoard').dialog('open');
+	});
+
+	$('.actionDeleteUser').click(function(){
+		grabInfoToForm(this, '#dialog-deleteUser', 'userid');
+		$('#dialog-deleteUser').dialog('open');
 	});
 });

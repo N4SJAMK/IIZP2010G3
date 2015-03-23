@@ -84,6 +84,28 @@ class Boards extends Controller{
 			$this->view("errors/denied");
 		}
 	}
+
+	public function remove(){
+		if($this->userMayEnter() === true){
+			$boards = $this->model("BoardsModel");
+			if($boards->remove(array("_id"=>(new MongoId($this->data("boardid")))))){
+				$this->ajaxResponse(0, "Board and its tickets removed!");
+			}else{
+				$this->ajaxResponse(1, "Failed to remove board!");
+			}
+		}
+	}
+
+	public function wipe(){
+		if($this->userMayEnter() === true){
+			$tickets = $this->model("TicketsModel");
+			if($tickets->remove(array("board"=>(new MongoId($this->data("boardid")))))){
+				$this->ajaxResponse(0, "Board emptied!");
+			}else{
+				$this->ajaxResponse(1, "Failed to empty the board!");
+			}
+		}
+	}
 }
 
 ?>

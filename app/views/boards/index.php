@@ -9,7 +9,7 @@
 $formatter = new Formatter();
 
 foreach($data["boardlist"] as $board){
-	echo "<tr>".
+	echo "<tr data-boardid=\"".$board["_id"]."\">".
 	"<td><a href=\"/boards/byuser/".$board["createdBy"]["_id"]."\">".$board["createdBy"]["email"]."</a></td>".
 	"<td>".$board["name"]."</td>".
 	"<td>".$board["accessCode"]."</td>".

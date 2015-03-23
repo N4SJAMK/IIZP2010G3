@@ -16,6 +16,25 @@ class BoardsModel{
 		$collection = $this->db->boards;
 		return $collection->count($filter);
 	}
+
+	public function remove($filter = null){
+		if(is_array($filter)){
+			$util = new Util();
+			$boards = $this->db->boards;
+			$tickets = new TicketsModel($this->db);
+
+			# Filter for deleting tickets
+			$ticketsFilter = $util->generateItemFilter($this, $filter, "board");
+
+			# Remove tickets and the board
+			$tickets->remove($ticketsFilter);
+			$boards->remove($filter);
+
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
 
 ?>

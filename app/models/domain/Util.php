@@ -26,6 +26,19 @@ class Util{
 			}
 		}
 	}
+
+	public function generateItemFilter($model, $filter, $idField){
+		$itemlist = $model->get($filter);
+		$resultFilter = array(
+			$idField=>array('$in'=>array())
+		);
+
+		foreach($itemlist as $item){
+			array_push($resultFilter[$idField]['$in'], (($item["_id"] instanceof MongoId) ? $item["_id"] : new MongoId($item["_id"])));
+		}
+
+		return $resultFilter;
+	}
 }
 
 ?>

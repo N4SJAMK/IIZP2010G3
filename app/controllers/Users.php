@@ -47,6 +47,19 @@ class Users extends Controller{
 			$this->ajaxResponse(1);
 		}
 	}
+
+	public function remove(){
+		$session = $this->model("Session");
+
+		if($session->isLogged()){
+			$users = $this->model("UsersModel");
+			if($users->remove(array("_id"=>new MongoId($this->data("userid"))))){
+				$this->ajaxResponse(0, "User removed!");
+			}else{
+				$this->ajaxResponse(1, "Failed to remove user!");
+			}
+		}
+	}
 }
 
 ?>

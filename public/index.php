@@ -16,7 +16,11 @@ include "../app/settings.php";
 
 # Autoloader for domain models
 spl_autoload_register(function($class){
-	include PATH_DMODELS.$class.".php";
+	if(preg_match("/Model$/i", $class) === 0){
+		include PATH_DMODELS.$class.".php";
+	}else{
+		include PATH_MODELS.$class.".php";
+	}
 });
 
 # Core includes

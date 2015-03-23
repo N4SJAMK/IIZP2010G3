@@ -7,7 +7,16 @@
 </div>
 
 <div id="dialog-addAdmin" title="Add new admin">
-	<p>Form here</p>
+	<form>
+		<input type="text" name="email" placeholder="Email">
+	</form>
+</div>
+
+<div id="dialog-promoteToAdmin" title="Promote to admin">
+	<p>Are you sure you want to promote this user to admin?</p>
+	<form>
+		<input type="hidden" name="userid" value="">
+	</form>
 </div>
 
 <div id="dialog-backUpNow" title="Confirm back-up operation">
@@ -27,9 +36,22 @@
 </div>
 
 <div id="dialog-deleteBoard" title="Confirm board removal">
-	<p>Are you sure you want ot completely remove this board?</p>
+	<p>Are you sure you want to completely remove this board and its tickets?</p>
+	<form>
+		<input type="hidden" name="boardid" value="">
+	</form>
+</div>
+
+<div id="dialog-deleteUser" title="Confirm user removal">
+	<p>Are you sure you want to remove this user? All content by this user is also removed!</p>
+	<form>
+		<input type="hidden" name="userid" value="">
+	</form>
 </div>
 
 <div id="dialog-emptyBoard" title="Confirm board emptying">
 	<p>Are you sure you want to remove all tickets in this board?</p>
+	<form>
+		<input type="hidden" name="boardid" value="">
+	</form>
 </div>
