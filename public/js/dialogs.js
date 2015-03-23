@@ -5,6 +5,10 @@ jQuery(document).ready(function(){
 		$(dialog+' form input[name="'+item+'"]').val(itemdata);
 	}
 
+	function removeLine(datafield, value){
+		$('tr[data-'+datafield+'="'+value+'"]').hide(400);
+	}
+
 	// Admin add
 	$('#dialog-addAdmin').dialog({
 		autoOpen: false,
@@ -54,6 +58,8 @@ jQuery(document).ready(function(){
 				dialogAjax.request(this, {
 					url: '/settings/removeadmin',
 					data: $('#dialog-deleteAdmin form').serialize()
+				},function(data, requestData){
+					removeLine('adminid', requestData['adminid']);
 				});
 			},
 			'Cancel': function(){
@@ -95,6 +101,8 @@ jQuery(document).ready(function(){
 				dialogAjax.request(this, {
 					url: '/boards/remove',
 					data: $('#dialog-deleteBoard form').serialize()
+				},function(data, requestData){
+					removeLine('boardid', requestData['boardid']);
 				});
 			},
 			'Cancel': function(){
@@ -154,6 +162,8 @@ jQuery(document).ready(function(){
 				dialogAjax.request(this, {
 					url: '/users/remove',
 					data: $('#dialog-deleteUser form').serialize()
+				},function(data, requestData){
+					removeLine('userid', requestData['userid']);
 				});
 			},
 			'Cancel': function(){
