@@ -7,7 +7,7 @@
 <?php
 
 foreach($data["userlist"] as $user){
-	echo "<tr data-userid=\"".$user["_id"]."\">".
+	echo "<tr data-userid=\"".$user["_id"]."\" data-adminid=\"".$user["adminid"]."\">".
 	"<td>".$user["email"]."</td>".
 	"<td><a class=\"fa fa-key actionChangePassword\" title=\"Change password\"></a><a class=\"actionDeleteAdmin fa fa-trash-o\" data-id=\"".$user["adminid"]."\" title=\"Remove\"></a></td>".
 	"</tr>";

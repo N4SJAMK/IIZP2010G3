@@ -1,6 +1,9 @@
 <!-- Dialogs -->
 <div id="dialog-deleteAdmin" title="Confirm admin removal">
 	<p>Only the admin right will be removed. User account will remain.</p>
+	<form>
+		<input type="hidden" name="adminid" value="">
+	</form>
 </div>
 
 <div id="dialog-addAdmin" title="Add new admin">

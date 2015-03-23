@@ -47,6 +47,18 @@ class Settings extends Controller{
 			}
 		}
 	}
+	
+	public function removeadmin(){
+		$session = $this->model("Session");
+
+		if($session->isLogged()){
+			$admins = $this->model("AdminsModel");
+			$admins->remove(array(
+				"_id"=>new MongoId($this->data("adminid"))
+			));
+			$this->ajaxResponse(0, "Removed");
+		}
+	}
 
 	private function getNewBackUpName(){
 		return date("Ymd-His")."-".uniqid();

@@ -22,7 +22,10 @@ jQuery(document).ready(function(){
 		closeText:'X',
 		buttons:{
 			'Remove': function(){
-				alert('todo');
+				dialogAjax.request(this, {
+					url: '/settings/removeadmin',
+					data: $('#dialog-deleteAdmin form').serialize()
+				});
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -124,6 +127,8 @@ jQuery(document).ready(function(){
 	});
 
 	$('.actionDeleteAdmin').click(function(){
+		var adminid = $(this).closest('tr[data-adminid]').attr('data-adminid');
+		$('#dialog-deleteAdmin form input[name="adminid"]').val(adminid);
 		$('#dialog-deleteAdmin').dialog('open');
 	});
 
@@ -132,8 +137,13 @@ jQuery(document).ready(function(){
 	});
 
 	$('.actionChangePassword').click(function(){
+		// Hae käyttäjän id, joka on löytyy rivin data-userid attribuutista
 		var userid = $(this).closest('tr[data-userid]').attr('data-userid');
+		
+		// Aseta userid arvo lomakkeen piilokenttään nimeltä "userid"
 		$('#dialog-changePassword form input[name="userid"]').val(userid);
+		
+		// Avaa dialogi
 		$('#dialog-changePassword').dialog('open');
 	});
 

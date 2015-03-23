@@ -31,6 +31,11 @@ class AdminsModel{
 		$collection = $this->db->admins;
 		return $collection->count($filter);
 	}
+	
+	public function remove($filter = array()){
+		$admins = $this->db->admins;
+		$admins->remove($filter);
+	}
 
 	private function getUser($id){
 		$users = $this->db->users;
