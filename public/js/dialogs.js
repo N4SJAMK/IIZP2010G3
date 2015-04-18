@@ -18,7 +18,11 @@ jQuery(document).ready(function(){
 		closeText:'X',
 		buttons:{
 			'Add': function(){
-				alert('todo');
+				dialogAjax.request(this, {
+					url: '/settings/addadmin',
+					data: $('#dialog-addAdmin form').serialize()
+				});
+				$('#dialog-addAdmin form input').val('');
 			},
 			'Cancel': function(){
 				$(this).dialog('close');
@@ -189,6 +193,25 @@ jQuery(document).ready(function(){
 	// Buttons to open dialogs
 	$('.actionAddAdmin').click(function(){
 		$('#dialog-addAdmin').dialog('open');
+		$('#dialog-addAdmin #addAdminEmailField').attr('disabled','disabled').val('Please, wait. Fetching users...');
+
+		// Autocomplete
+		$.ajax({
+			dataType: 'json',
+			url: 'users/userlist',
+			success: function(data){
+				// Edit the data format a bit
+				var autoCompleteData = new Array();
+				for(var i in data.data){
+					autoCompleteData.push(data.data[i].email);
+				}
+
+				$('#addAdminEmailField').removeAttr('disabled').val('');
+				$('#dialog-addAdmin #addAdminEmailField').autocomplete({
+					source: autoCompleteData
+				});
+			}
+		});
 	});
 
 	$('.actionPromoteToAdmin').click(function(){

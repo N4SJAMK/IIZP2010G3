@@ -39,6 +39,14 @@ class Util{
 
 		return $resultFilter;
 	}
+
+	public function limitFields(Array &$results, Array $fields){
+		foreach($results as &$user){
+			foreach($user as $column => $value){
+				if(!in_array($column, $fields)) unset($user[$column]);
+			}
+		}
+	}
 }
 
 ?>

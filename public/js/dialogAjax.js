@@ -21,7 +21,7 @@ var dialogAjax = (function($, exports){
 	}
 
 	exports.request = function(self, userSettings, successCallback){
-		var self = $(self);
+		var self = $(self)
 		var successCallback = (typeof successCallback == 'function') ? successCallback : null;
 		var requestData = (typeof userSettings['data'] == 'string') ? $.unparam(userSettings['data']) : null;
 		var settings = {

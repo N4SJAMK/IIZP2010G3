@@ -18,7 +18,8 @@ class UsersModel{
 	}
 
 	public function changePassword($id, $passwordRaw){
-		$salt = bin2hex(mcrypt_create_iv(64, MCRYPT_DEV_RANDOM));
+		$size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_128, "cbc");
+		$salt = bin2hex(mcrypt_create_iv($size, MCRYPT_DEV_RANDOM));
 		$passwordHash = crypt($passwordRaw, "$2a$10$".$salt."$");
 
 		$collection = $this->db->users;

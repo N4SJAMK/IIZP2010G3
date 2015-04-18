@@ -48,6 +48,23 @@ class Users extends Controller{
 		}
 	}
 
+	public function userlist(){
+		$session = $this->model("Session");
+
+		if($session->isLogged() === true){
+			$util = new Util();
+			$users = $this->model("UsersModel");
+			$userlist = $users->get();
+
+			# Should edit the get method to allow field picking
+			$util->limitFields($userlist, array("email"));
+
+			$this->ajaxResponse(0, "", $userlist);
+		}else{
+			$this->ajaxResponse(1);
+		}
+	}
+
 	public function remove(){
 		$session = $this->model("Session");
 

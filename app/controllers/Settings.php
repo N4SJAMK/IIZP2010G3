@@ -65,20 +65,38 @@ class Settings extends Controller{
 		$session = $this->model("Session");
 
 		if($session->isLogged()){
-			$admins = $this->model("AdminsModel");
-			$admin = $admins->get(array(
-				"userid"=>new MongoId($this->data("userid"))
-			),true);
+			$users = $this->model("UsersModel");
 
-			# Doesn't exist yet -> add
-			if($admin === null){
-				if($admins->add($this->data("userid"))){
-					$this->ajaxResponse(0, "User promoted to admin!");
+			# Find out how to get user
+			if($this->data("userid") !== null){
+				$filter = array("_id"=>new MongoId($this->data("userid")));
+			}elseif($this->data("email") !== null){
+				$filter = array("email"=>$this->data("email"));
+			}else{
+				# exit if nothing sent
+				$this->ajaxResponse(1, "No data sent? User id or email required.");
+			}
+
+			$user = $users->get($filter, true);
+
+			if($user !== null){
+				$admins = $this->model("AdminsModel");
+				$admin = $admins->get(array(
+					"userid"=>$user["_id"]
+				),true);
+
+				# Doesn't exist yet -> add
+				if($admin === null){
+					if($admins->add($user["_id"])){
+						$this->ajaxResponse(0, "User promoted to admin!");
+					}else{
+						$this->ajaxResponse(1, "Failed to promote user to admin!");
+					}
 				}else{
-					$this->ajaxResponse(1, "Failed to promote user to admin!");
+					$this->ajaxResponse(1, "This user is already an admin!");
 				}
 			}else{
-				$this->ajaxResponse(1, "This user is already an admin!");
+				$this->ajaxResponse(1, "User doesn't exist!");
 			}
 		}
 	}

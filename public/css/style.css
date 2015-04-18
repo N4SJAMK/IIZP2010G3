@@ -43,6 +43,10 @@ form input, input{
 	box-sizing: border-box;
 }
 
+input:disabled{
+	color: #999999;
+}
+
 input, button{
 	border-radius: 5px;
 	padding-left: 10px;
@@ -331,4 +335,29 @@ table tbody tr td:last-child a.fa:hover{
 .ui-dialog-buttonpane button{
 	border-radius: 5px;
 	margin: 3px;
+}
+
+/* AUTOCOMPLETE HELPER */ 
+.ui-helper-hidden-accessible{
+	display: none;
+}
+
+.ui-autocomplete{
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+	background-color: #ffffff;
+	position: absolute;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+.ui-autocomplete .ui-menu-item{
+	padding: 5px;
+	border-bottom: 1px solid #ededed;
+}
+
+.ui-autocomplete .ui-menu-item.ui-state-focus{
+	background-color: #EB584A;
+	color: #ffffff;
+	border-bottom: 1px solid #EB584A;
 }

@@ -23,7 +23,7 @@ foreach($data["userlist"] as $user){
 </div>
 
 <h2>Database</h2>
-<p>This will back up the database into the path defined in <span class="code">PATH_DB_BACKUP</span> in <span class="code">app/settings.php</span> which is now <span class="code"><?php echo $data["backuppath"]; ?></span>. Each back-up will have its own sub directory in this directory.</p>
+<p>This will back up the database into the path defined in <span class="code">PATH_DB_BACKUP</span> in <span class="code">app/settings.php</span> which is now <span class="code"><?php echo $data["backuppath"]; ?></span>. Each back-up will have its own sub directory in this directory. Make sure permissions are set correctly.</p>
 <button class="actionBackUpNow">
 	Back-up now
 </button>

@@ -8,7 +8,7 @@
 
 <div id="dialog-addAdmin" title="Add new admin">
 	<form>
-		<input type="text" name="email" placeholder="Email">
+		<input type="text" name="email" placeholder="Email" id="addAdminEmailField">
 	</form>
 </div>
 
