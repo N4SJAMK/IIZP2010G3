@@ -2,6 +2,8 @@
 
 ## Pikaohjeet miten laittaa manuaalisesti koko roska
 
+Note: Ohjeet tarkoitettu tiimin jäsenille. Varsinaisesti ei ole väliä mihin järjestelmän asentaa, kunhan on pääsy samaan kantaan kuin Contriboard.
+
 1. Asenna vagrant: https://github.com/N4SJAMK/teamboard
 2. Kun vagrant on tulilla ja olet `vagrant ssh` yhdistänyt siihen niin aletaan hommiin:
 
